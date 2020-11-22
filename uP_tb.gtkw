@@ -1,0 +1,61 @@
+[*]
+[*] GTKWave Analyzer v3.3.77 (w)1999-2016 BSI
+[*] Sun Nov 22 06:11:50 2020
+[*]
+[dumpfile] "C:\Users\Earst\OneDrive\Documentos\Semestre 4\Electronica Digital 1\Lab\Proyecto_Up_Digital_1\uP_tb.vcd"
+[dumpfile_mtime] "Sun Nov 22 05:54:47 2020"
+[dumpfile_size] 38015
+[savefile] "C:\Users\Earst\OneDrive\Documentos\Semestre 4\Electronica Digital 1\Lab\Proyecto_Up_Digital_1\uP_tb.gtkw"
+[timestart] 0
+[size] 1229 434
+[pos] 64 176
+*-4.000000 4 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[sst_width] 197
+[signals_width] 166
+[sst_expanded] 1
+[sst_vpaned_height] 96
+@28
+testbench.clock
+testbench.reset
+testbench.phase
+@22
+[color] 2
+testbench.program_byte[7:0]
+@c00022
+[color] 3
+testbench.address_RAM[11:0]
+@28
+(0)testbench.address_RAM[11:0]
+(1)testbench.address_RAM[11:0]
+(2)testbench.address_RAM[11:0]
+(3)testbench.address_RAM[11:0]
+(4)testbench.address_RAM[11:0]
+(5)testbench.address_RAM[11:0]
+(6)testbench.address_RAM[11:0]
+(7)testbench.address_RAM[11:0]
+(8)testbench.address_RAM[11:0]
+(9)testbench.address_RAM[11:0]
+(10)testbench.address_RAM[11:0]
+(11)testbench.address_RAM[11:0]
+@1401200
+-group_end
+@22
+testbench.PC[11:0]
+@28
+[color] 5
+testbench.c_flag
+[color] 5
+testbench.z_flag
+@22
+[color] 6
+testbench.oprnd[3:0]
+[color] 6
+testbench.instr[3:0]
+testbench.accu[3:0]
+@23
+testbench.FF_out[3:0]
+@22
+testbench.data_bus[3:0]
+testbench.pushbuttons[3:0]
+[pattern_trace] 1
+[pattern_trace] 0
