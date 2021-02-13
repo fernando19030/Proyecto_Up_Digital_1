@@ -1,4 +1,4 @@
-
+//Proyecto final Electronica Digital 1: Procesadro uP
 module busdriver(input wire en, input wire [3:0]in, output wire [3:0]out);
 
   assign out = (en) ? in : 4'bz;//Si en esta habilitado deja pasar.
@@ -96,44 +96,27 @@ module Decode(input [6:0] address, output [12:0] control_signals);
     reg [12:0] q;
     always @ (address) begin
         casez(address) //Implementación de la tabla de verdad del decoder por medio de casos
-            // any
-            7'b????_??0: q <= 13'b1000_000_001000;
-            // JC
-            7'b0000_1?1: q <= 13'b0100_000_001000;
-            7'b0000_0?1: q <= 13'b1000_000_001000;
-            // JNC
-            7'b0001_1?1: q <= 13'b1000_000_001000;
-            7'b0001_0?1: q <= 13'b0100_000_001000;
-            // CMPI
-            7'b0010_??1: q <= 13'b0001_001_000010;
-            // CMPM
-            7'b0011_??1: q <= 13'b1001_001_100000;
-            // LIT
-            7'b0100_??1: q <= 13'b0011_010_000010;
-            // IN
-            7'b0101_??1: q <= 13'b0011_010_000100;
-            // LD
-            7'b0110_??1: q <= 13'b1011_010_100000;
-            // ST
-            7'b0111_??1: q <= 13'b1000_000_111000;
-            // JZ
-            7'b1000_?11: q <= 13'b0100_000_001000;
-            7'b1000_?01: q <= 13'b1000_000_001000;
-            // JNZ
-            7'b1001_?11: q <= 13'b1000_000_001000;
-            7'b1001_?01: q <= 13'b0100_000_001000;
-            // ADDI
-            7'b1010_??1: q <= 13'b0011_011_000010;
-            // ADDM
-            7'b1011_??1: q <= 13'b1011_011_100000;
-            // JMP
-            7'b1100_??1: q <= 13'b0100_000_001000;
-            // OUT
-            7'b1101_??1: q <= 13'b0000_000_001001;
-            // NANDI
-            7'b1110_??1: q <= 13'b0011_100_000010;
-            // NANDM
-            7'b1111_??1: q <= 13'b1011_100_100000;
+            7'b????_??0: q <= 13'b1000_000_001000; //any
+            7'b0000_1?1: q <= 13'b0100_000_001000; //JC
+            7'b0000_0?1: q <= 13'b1000_000_001000; //JC
+            7'b0001_1?1: q <= 13'b1000_000_001000; //JNC
+            7'b0001_0?1: q <= 13'b0100_000_001000; //JNC
+            7'b0010_??1: q <= 13'b0001_001_000010; //CMPI
+            7'b0011_??1: q <= 13'b1001_001_100000; //CMPM
+            7'b0100_??1: q <= 13'b0011_010_000010; //LIT
+            7'b0101_??1: q <= 13'b0011_010_000100; //IN
+            7'b0110_??1: q <= 13'b1011_010_100000; //LD
+            7'b0111_??1: q <= 13'b1000_000_111000; //ST
+            7'b1000_?11: q <= 13'b0100_000_001000; //JZ
+            7'b1000_?01: q <= 13'b1000_000_001000; //JZ
+            7'b1001_?11: q <= 13'b1000_000_001000; //JNZ
+            7'b1001_?01: q <= 13'b0100_000_001000; //JNZ
+            7'b1010_??1: q <= 13'b0011_011_000010; //ADDI
+            7'b1011_??1: q <= 13'b1011_011_100000; //ADDM
+            7'b1100_??1: q <= 13'b0100_000_001000; //JMP
+            7'b1101_??1: q <= 13'b0000_000_001001; //OUT
+            7'b1110_??1: q <= 13'b0011_100_000010; //NANDI
+            7'b1111_??1: q <= 13'b1011_100_100000; //NANDM
             default: q <= 13'b1111111111111;
         endcase
     end
@@ -194,8 +177,9 @@ module uP(input clock, reset, input [3:0] pushbuttons,
           output phase, c_flag, z_flag,
           output [3:0] instr, oprnd, data_bus, FF_out, accu,
           output [7:0] program_byte,
-          output [11:0] PC, address_RAM);
+          output [11:0] PC, address_RAM); //Se declaran las entradas
 
+    //Se llaman cables que se utilizaran para interconectar los modulos entre si.
     wire incPC, loadPC, loadA, loadFlags, csRAM, weRAM, oeALU, oeIN, oeOprnd, loadOut;
     wire phase, loadFetch, c, ze, cablez, cablec;
     wire [2:0] s;
@@ -205,37 +189,42 @@ module uP(input clock, reset, input [3:0] pushbuttons,
     wire [11:0] cablePC, cableAddress;
     wire [12:0] control;
 
-    assign bus_datos = data_bus;
-    assign loadFetch = ~phase;
-    assign cableROM = program_byte;
-    assign cablePC = PC;
-    assign ins = cableFetch[7:4];
-    assign opr = cableFetch[3:0];
-    assign cableAddress = {opr, cableROM};
-    assign address_RAM = cableAddress;
+    assign bus_datos = data_bus; //data bus
+    assign loadFetch = ~phase; //enable del fetch
+    assign cableROM = program_byte; //salida de la ROM
+    assign cablePC = PC; //salida del contador
+    assign ins = cableFetch[7:4]; //los 4 bits mas significativos del Fetch
+    assign opr = cableFetch[3:0]; //los 4 bits menos significativos del Fetch
+    assign cableAddress = {opr, cableROM}; //concatenacion de la entrada del selector de la localidad de memoria de la RAM
+    assign address_RAM = cableAddress; 
     assign instr = ins;
     assign oprnd = opr;
     assign accu = cableAccu;
-    assign cablez = z_flag;
+    assign cablez = z_flag; 
     assign cablec = c_flag;
 
+    //Bloque de los busdrivers que se encuentran en el procesador
     busdriver busin(oeIN, pushbuttons, data_bus);
     busdriver busALU(oeALU, cableALU ,data_bus);
     busdriver busOpr(oeOprnd, opr ,data_bus);
 
-    Phase toggleFF(clock, reset, phase);
-    Fetch register1(clock, reset, loadFetch, cableROM, cableFetch);
-    Flags register2(clock, reset, loadFlags, c, ze, c_flag, z_flag);
-    Accumulator register3(clock, reset, loadA, cableALU, cableAccu);
-    Outputs register4(clock, reset, loadOut, bus_datos, FF_out);
+    //Bloque de los registros de Flip Flops D y del toggle FF que se encuentran en el procesador
+    Phase toggleFF(clock, reset, phase); //FFT
+    Fetch register1(clock, reset, loadFetch, cableROM, cableFetch); //FFD de 8 bits
+    Flags register2(clock, reset, loadFlags, c, ze, c_flag, z_flag); //FFD de 2 bits
+    Accumulator register3(clock, reset, loadA, cableALU, cableAccu); //FFD de 4 bits
+    Outputs register4(clock, reset, loadOut, bus_datos, FF_out); //FFD de 4 bits
 
-    counter lc1(clock, reset, incPC, loadPC, cableAddress, PC);
+    //Bloques de logica combinacional que se encuentran en el procesador
+    counter lc1(clock, reset, incPC, loadPC, cableAddress, PC); 
     ROM lc2(cablePC, program_byte);
     ALU lc3(s, cableAccu, bus_datos, c, ze, cableALU);
     RAM lc4(cableAddress, csRAM, weRAM, data_bus);
 
-    assign signal = {ins, cablec, cablez, phase};
+    //Llamada del cerebro del procesador
+    assign signal = {ins, cablec, cablez, phase}; //Concatenacion de las entradas del decoder
     Decode master(signal, control);
+    //Separación de la salida del decoder para llevar la señal a cada punto requerido.
     assign incPC = control[12];
     assign loadPC = control[11];
     assign loadA = control[10];
@@ -249,6 +238,3 @@ module uP(input clock, reset, input [3:0] pushbuttons,
     assign loadOut = control[0];
 
 endmodule
-
-
-

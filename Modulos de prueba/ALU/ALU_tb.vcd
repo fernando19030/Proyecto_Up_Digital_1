@@ -1,0 +1,105 @@
+$date
+	Sun Nov 22 13:38:13 2020
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1ps
+$end
+$scope module testbench $end
+$var wire 1 ! zero $end
+$var wire 4 " y [3:0] $end
+$var wire 1 # carry $end
+$var reg 4 $ a [3:0] $end
+$var reg 4 % b [3:0] $end
+$var reg 3 & f [2:0] $end
+$scope module m $end
+$var wire 4 ' a [3:0] $end
+$var wire 4 ( b [3:0] $end
+$var wire 3 ) f [2:0] $end
+$var wire 1 ! zero $end
+$var wire 4 * s [3:0] $end
+$var wire 1 # carry $end
+$var reg 5 + control [4:0] $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+#0
+$dumpvars
+b0 +
+b0 *
+b0 )
+b0 (
+b0 '
+b0 &
+b0 %
+b0 $
+0#
+b0 "
+1!
+$end
+#1
+0!
+b1 "
+b1 *
+b1 +
+b1 $
+b1 '
+#2
+b1 %
+b1 (
+#3
+1!
+b0 "
+b0 *
+b0 +
+b1 &
+b1 )
+b0 %
+b0 (
+b0 $
+b0 '
+#4
+0!
+b1111 "
+b1111 *
+1#
+b11111 +
+b1 %
+b1 (
+#5
+1!
+b0 "
+b0 *
+0#
+b0 +
+b1 $
+b1 '
+#6
+0!
+b100 "
+b100 *
+b100 +
+b10 &
+b10 )
+b100 %
+b100 (
+b1000 $
+b1000 '
+#8
+b11 &
+b11 )
+b0 $
+b0 '
+#10
+b1111 "
+b1111 *
+b1111 +
+b100 &
+b100 )
+b0 %
+b0 (
+b10 $
+b10 '
+#30

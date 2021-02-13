@@ -1,0 +1,3 @@
+Link repositorio = https://github.com/fernando19030/Proyecto_Up_Digital_1.git
+
+Link video = https://youtu.be/--nDHbM3Tm8

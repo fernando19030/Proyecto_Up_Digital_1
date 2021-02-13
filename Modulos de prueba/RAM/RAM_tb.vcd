@@ -1,0 +1,81 @@
+$date
+	Sun Nov 22 17:58:16 2020
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1ps
+$end
+$scope module testbench $end
+$var wire 4 ! saved_data [3:0] $end
+$var wire 1 " data $end
+$var reg 12 # address_RAM [11:0] $end
+$var reg 1 $ csRAM $end
+$var reg 4 % datain [3:0] $end
+$var reg 1 & weRAM $end
+$scope module ram $end
+$var wire 12 ' address_RAM [11:0] $end
+$var wire 1 $ csRAM $end
+$var wire 1 & weRAM $end
+$var wire 4 ( saved_data [3:0] $end
+$var reg 4 ) salida_datos [3:0] $end
+$scope begin MEM_READ $end
+$upscope $end
+$scope begin MEM_WRITE $end
+$upscope $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+#0
+$dumpvars
+bx )
+bx (
+bx '
+0&
+bx %
+1$
+bx #
+z"
+bx !
+$end
+#1
+b0 #
+b0 '
+#2
+b1 #
+b1 '
+#3
+b10 #
+b10 '
+#4
+0"
+bz !
+bz (
+b0 #
+b0 '
+b1010 %
+1&
+#5
+1"
+b1 #
+b1 '
+b1011 %
+#6
+0"
+b10 #
+b10 '
+b1100 %
+#7
+z"
+bz )
+0&
+b0 #
+b0 '
+#8
+b1 #
+b1 '
+#9
+b10 #
+b10 '
+#200
